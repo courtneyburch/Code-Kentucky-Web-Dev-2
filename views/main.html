@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_title }}</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    
+</head>
+
+<body>
+    
+    <header>
+        <h1 class="logo">Animal Manager</h1>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+        </label>
+        <nav class="top nav">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="/showAll.html">View All Animals</a></li>
+                <li><a href="/addAnimal">Add an Animal</a></li> 
+                <li><a href="/findAnimal">Find an Animal</a></li> 
+                <!-- <li><a href="links.html">Links</a></li> -->
+                </ul>
+            </nav>
+
+    </header>
+
+    <main class="container">
+       <div>
+        {% block content %} {% endblock %}
+       </div>
+        
+    </main>
+    <footer>
+        <div class="footer">
+        Courtney Burch Code Kentucky Web Development 2
+        </div>
+    </footer>
+    
+</body>
+
+</html>

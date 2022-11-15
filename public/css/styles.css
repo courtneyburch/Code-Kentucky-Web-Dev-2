@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2family=Open+Sans:wght@300;400;700&display=swap');
+
+:root { 
+  --background: #0F64DB;
+  --dark-contrast: #2E28B7;
+  --bright-contrast: #DBCA0F;
+  --light-contrast: #EDF4FE;
+}
+
+*, *::before, *::after:{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  background: var(--light-contrast);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+header{
+  background: var(--background);
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  color: var(--light-contrast);
+}
+
+/* invisible checkbox to consume clicks for menu */
+.nav-toggle{ /*hides checkbox*/
+  display: none;
+  
+}
+
+.nav-toggle-label{ /*positions hamburger menu*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%; /*100% height of nav bar*/
+  display: flex;
+  align-items: center;
+}
+/* Set the three lines for hamburger menu */
+.nav-toggle-label span, .nav-toggle-label span::before, .nav-toggle-label span::after {
+  display: block;
+  background: var(--light-contrast);
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+  
+}
+.nav-toggle-label span::before, .nav-toggle-label span::after {
+  content: "";
+  position: absolute;
+}
+.nav-toggle-label span::before{
+  bottom: 9px;
+}
+.nav-toggle-label span::after{
+  top: 9px;
+}
+
+nav{
+  position: absolute;
+  text-align: left;
+  top: 100%;  /*100% away from top of parent (logo) ie nav bar will be below logo bar*/
+  left: 0;
+  background: var(--background);
+  width: 100%;
+  transform: scale(1, 0); /*collapses menu to 0 height, 100& width*/
+  transform-origin: top; /*causes menu to unfold from top*/
+  transition: transform 400ms ease-in-out; 
+}
+nav ul{ 
+  margin: 0;
+  padding 0;
+  list-style: none /*gets rid of bullet points*/
+}
+
+nav li{ /*spread out list items*/
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+nav a{
+    color: var(--light-contrast);
+    text-decoration: none;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 200ms ease-in-out; /*causes links to transition to opacity of 0 as nav menu closes- checked state no longer active*/ 
+}
+
+nav a:hover{
+  color: var(--bright-contrast);
+}
+
+.nav-toggle:checked ~ nav{ /*applied to nave Sibling following nav toggle class*/
+  display: block;
+  transform: scale(1,1); /*100% height and width, causes menu to unfold when box is checked*/
+}
+.nav-toggle:checked ~ nav a{
+  opacity: 1;
+  transition: opacity 500ms ease-in-out; /*causes links to transition as nav menu opens to opacity of 1- when check state is activated*/ 
+}
+ 
+main{
+    display: block;
+    padding: 4em 2em;
+    max-width: 90%
+}
+
+main p{
+    line-height: 1.5;
+}
+
+main h1{
+    display: none;
+    color: var(--dark-contrast);
+}
+@media screen and (min-width: 676px){ 
+.nav-toggle-label{
+    display: none;
+}
+header{
+    display: grid;
+    grid-template-columns: 1fr auto minmax(500px, 3fr) 1fr; 
+    /* This gives one fraction of available space on either side, middle area is 3 times larger*/
+}
+.logo{
+    grid-column: 2/3; /*logo starts at column 2 and spans 1 column*/
+}
+nav{
+    all: unset; /*unsets all styles from mobile layout*/
+    grid-column: 3/4; /*nav starts at column 3 and spans 1*/
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+nav ul{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+nav li{
+    margin-left: 1.5em;
+    margin-bottom: 0;
+}
+nav a{
+    opacity: 1;
+}
+nav a::before{
+    content:'';
+    display:block;
+    height:5px;
+    background-color: var(--dark-contrast);
+    position: relative;
+    top: -0.5em;
+    left:0;
+    right:0;
+    transform: scale(0,1); /*width of 0, height of 1, causes bards to collapse*/
+    transition: transform ease-in-out 200ms; /*causes bar to collapse when not hovered*/
+}
+
+nav a:hover::before{
+    transform: scale(1, 1); /*causes bars to appear when hovered*/
+}
+main{
+    display: block;
+    padding: 5em 6em;
+    font-size: 1.5em;
+    line-height: 1.3;
+}
+main h1{
+    display: block;
+    font-size: 1.5em;
+}
+main a{
+    text-decoration: none;
+    color: var(--dark-contrast);
+}
+main a:hover, main a:focus{
+    color: var(--bright-contrast);
+}
+.footer  {
+    background: linear-gradient(to bottom right, transparent 49%, var(--background) 50%); */
+     background-repeat: no-repeat;
+    position: relative; 
+    z-index: 1;
+    background-color: var(--background);
+    color: var(--light-contrast);
+    padding-top: 2em;
+    padding-bottom: 2em;
+    text-align: center;
+
+}
+
+ .footer::before, .footer::after {
+      content: '';
+      display: block;
+      height: 10%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      /* z-index: -1; */
+  
+}
+ .footer::before {
+    background-color: var(--bright-contrast);
+    top: 0; 
+     /* transform: skewY(-4deg); 
+    transform-origin: 0%;   */
+} 
+
+  .footer::after {
+    background-color: var(--bright-contrast); 
+    bottom: 0; 
+     /* transform: skewY(0deg);
+    transform-origin: 100%;  */
+}  
+}
+
+
+
+
