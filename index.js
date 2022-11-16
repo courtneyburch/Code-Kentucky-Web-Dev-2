@@ -57,10 +57,11 @@ app.use('/addAnimal', function(req, res){  // recieves GET and POST for same rou
 		    	res.render('resultpage', {result : 'Error ' + err});  
 		    }
 		    else {
-		        res.render('resultpage', {title: 'add annimal, result : 'New animalhas been added'});   
+		        res.render('resultpage', {title: 'add annimal', result : 'New animal has been added'});   
 		    }
 	    }); 
 	}
+
 });
 
 

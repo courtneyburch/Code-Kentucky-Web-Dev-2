@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<!-- called by show all link in nav bar -->
+<h2>All Animals</h2>
+
+<table class='table'>
+	<tr>
+		<th>Type</th>
+		<th>Name</th>
+		<th>Breed</th>
+		<th>Age</th>
+		<th>Coloring</th>
+		{% for trip in trips %}
+	<tr>
+		<td>{{animal.type}}</td>
+		<td>{{animal.name}}</td>
+		<td>{{animal.breed}}</td>
+		<td>{{animal.age}}</td>
+		<td>{{animal.coloring}}</td>
+		<td><a href='/updateAnimalInfo?date={{animal.name}}' class="badge badge-dark">Edit</a></td>
+		<td><a href='/deleteAnimal?date={{animal.name}}' class="badge badge-dark">Delete</a></td>
+
+	</tr>
+	{% endfor %}
+</table>
+<br>
+{% endblock %}
