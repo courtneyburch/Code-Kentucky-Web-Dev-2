@@ -1,0 +1,19 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<!-- called by get by major link in nav bar -->
+
+<h3>Get Animal by Name</h3>
+<p>Use the form entry to find an animal by name.</p>
+<p>
+<form method='post' action='/getByName'>
+    <input type="text" name="'name">
+    <p>Enter Name</p>  
+</form>
+</p>
+<p><input type='submit'></p>
+</form>
+
+
+{% endblock %}

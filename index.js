@@ -26,11 +26,11 @@ app.get('/showAll', function(req, res) {   // GET request from link in nav bar
 		    res.render('resultpage', {result : err});   
 		}
 		else {
-		    if (allAnimals.length == 0) {  // allTrips array was empty
+		    if (allAnimals.length == 0) {  // array was empty
 			   res.render('resultpage', {result : 'No animals found.'});   
 		    }
 		    else {
-			   	res.render('showAll', { trips: allAnimals });  
+			   	res.render('showAll', { animals: allAnimals });  //show all animals in table format
 		    }
 		}
 	});
@@ -52,16 +52,42 @@ app.use('/addAnimal', function(req, res){  // recieves GET and POST for same rou
             
 	    });
 
-	    newAnimal.save( function(err) {      // save new trip
+	    newAnimal.save( function(err) {      // save new animal
 		    if (err) {
 		    	res.render('resultpage', {result : 'Error ' + err});  
 		    }
 		    else {
 		        res.render('resultpage', {title: 'add annimal', result : 'New animal has been added'});   
-		    }
+		    } //populate result page with message
 	    }); 
 	}
 
+});
+
+app.use('/getByName', function(req, res) {   
+    if(req.method == "GET") {
+		res.render('getAnimalForm', {title: 'Find animal by name'}); // send form
+	}
+	else if(req.method == "POST") {
+		
+		let reqName = req.body.name;  // read the name
+		
+		Animal.find( {name: reqName}, function(err, allByName) {  
+			if (err) {
+				res.render('resultpage', {result : err});   
+			}
+			else {
+				if (allByName.length == 0) { 
+					res.render('resultpage', {result : 'No animal was found with that name.'});   
+				} //no animal found with that name
+				else {
+					res.render('showAll', { animals: allByName });  
+				}
+			}
+		});
+	
+	}
+    
 });
 
 
