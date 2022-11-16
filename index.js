@@ -90,7 +90,67 @@ app.use('/getByName', function(req, res) {
     
 });
 
+app.use('/updateAnimalInfo', function(req, res){
+	if(req.method == "GET") {
+		let name = req.query.name;
+		Animal.findOne( {name: name}, function(err, myAnimal) { 
+			if (err) {
+				res.render('resultpage', {result : err});   
+			}
+			else{
+				res.render('editAnimalInfo', {title: 'Edit Animal Info', animal: myAnimal});
+			}
+		});
+	} else {
+		if(req.method == "POST") {
+            let updateType = req.body.newType;
+            let updateName = req.body.newName;
+			let updateBreed = req.body.newBreed;
+			let updateAge = req.body.newAge;
+			let updateColoring = req.body.newColoring;
 
+		
+			Animal.findOne( {name: updateName}, function(err, myAnimal) { //find the Animal to be updated in the database
+				if (err) {
+					res.render('resultpage', {result : err});   
+				}
+				else{
+					myAnimal.type = updateType;
+					myAnimal.name = updateName;
+					myAnimal.breed = updateBreed;
+                    myAnimal.age = updateAge;
+                    myAnimal.coloring = updateColoring;
+					myAnimal.save(function(err){
+						if(err){
+							res.render('resultpage', {result : err});  
+						}
+						else {
+						const msg = `Animal data updated for: ${updateName}`;
+						res.render('resultPage', { result : msg });
+						}
+					
+					});		
+				}
+			});
+		}
+	}	
+});
+
+app.get('/deleteAnimal', function(req, res){
+	
+	let name = req.query.name;
+		Animal.findOneAndRemove( {name: name}, function(err, myAnimal) { 
+		if (err) {
+			res.render('resultpage', {result : err});   
+			}
+		else {
+			const msg = `Animal ${name} removed`;
+			res.render('resultPage', { result : msg });
+			}
+		});
+	
+});
+	
 app.listen(3000,  function() {
 	console.log('Listening on port 3000, ctrl-c to quit');
     });
