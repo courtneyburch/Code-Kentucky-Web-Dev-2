@@ -47,7 +47,7 @@ app.use('/addAnimal', function(req, res){  // recieves GET and POST for same rou
             type: req.body.type,
             name: req.body.name,
             breed: req.body.breed,
-            age: req.body.age,
+            DOB: req.body.dob,
             coloring: req.body.coloring,
             
 	    });
@@ -103,11 +103,11 @@ app.use('/updateAnimalInfo', function(req, res){
 		});
 	} else {
 		if(req.method == "POST") {
-            let updateType = req.body.newType;
-            let updateName = req.body.newName;
-			let updateBreed = req.body.newBreed;
-			let updateAge = req.body.newAge;
-			let updateColoring = req.body.newColoring;
+            let updateType = req.body.type;
+            let updateName = req.body.name;
+			let updateBreed = req.body.breed;
+			let updateAge = req.body.age;
+			let updateColoring = req.body.coloring;
 
 		
 			Animal.findOne( {name: updateName}, function(err, myAnimal) { //find the Animal to be updated in the database

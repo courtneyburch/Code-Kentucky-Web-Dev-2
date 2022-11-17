@@ -1,0 +1,106 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<div class="container">
+   <form method='post' action='/updateAnimalInfo'>
+      <table class="table-sm">
+         <tbody>
+            <tr>
+               <td>Name</td>
+               <td><input value={{animal.name}} name='name' readonly></td>
+               <td> Read Only </td>
+            </tr>
+            <p><td>Miles</td>
+               <td>{{trip.miles}}</td>
+               <td> <button class="btn btn-outline-dark" type='button' id='miles'>Edit</button> 
+               <select class='select' name='type'>
+               <option value='Dog'>Dog</option>
+               <option value='Cat'>Cat</option>
+               <option value='Bird'>Bird</option>
+               <option value='Rabbit'>Rabbit</option>
+               <option value='Other'>Other</option>
+           </select> Select Breed </p>
+            <tr>
+               <td>Name</td>
+               <td>{{animal.name}}</td>
+               <td> <button class="btn btn-outline-dark" type='button' id='name'>Edit</button> <span id='nameInput'
+                     style="display: none"> <input name='newName' value={{animal.name}}> Enter new
+                     value</span></td>
+            </tr>
+            <tr>
+               <td>Breed</td>
+               <td>{{animal.breed}}</td>
+               <td> <button class="btn btn-outline-dark" type='button' id='breed'>Edit</button> <span id='breedInput'
+                     style="display: none"> <input name='newBreed' value={{animal.breed}}> Enter new
+                     value</span></td>
+            </tr>
+            <tr>
+               <td>Age</td>
+               <td>{{animal.age}}</td>
+               <td> <button class="btn btn-outline-dark" type='button' id='age'>Edit</button> <span id='ageInput'
+                     style="display: none"> <input name='newAge' value={{animal.age}}> Enter new
+                     value</span></td>
+            </tr>
+            <tr>
+               <td>Coloring</td>
+               <td>{{animal.coloring}}</td>
+               <td> 
+                  <button class="btn btn-outline-dark" type='button' id='coloring'>Edit
+                  </button>
+                  <span id='coloringInput'
+                     style="display: none"> 
+                     <input name='newColoring' value={{animal.coloring}}>
+                     Enter new value
+                  </span>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <p><input type='submit' class="btn btn-outline-dark"></p>
+   </form>
+</div>
+
+<script>
+
+   document.getElementById('type').onclick = function () {
+      if (document.getElementById('typeInput').style.display == 'none')
+         document.getElementById('typeInput').style.display = 'inline'
+      else
+         document.getElementById('typeInput').style.display = 'none'
+   };
+
+
+   document.getElementById('name').onclick = function () {
+      if (document.getElementById('nameInput').style.display == 'none')
+         document.getElementById('nameInput').style.display = 'inline'
+      else
+         document.getElementById('nameInput').style.display = 'none'
+   };
+
+   document.getElementById('breed').onclick = function () {
+      if (document.getElementById('breedInput').style.display == 'none')
+         document.getElementById('breedInput').style.display = 'inline'
+      else
+         document.getElementById('breedInput').style.display = 'none'
+   };
+
+   document.getElementById('age').onclick = function () {
+      if (document.getElementById('ageInput').style.display == 'none')
+         document.getElementById('ageInput').style.display = 'inline'
+      else
+         document.getElementById('ageInput').style.display = 'none'
+   };
+
+   document.getElementById('coloring').onclick = function () {
+      if (document.getElementById('coloringInput').style.display == 'none')
+         document.getElementById('coloringInput').style.display = 'inline'
+      else
+         document.getElementById('coloringInput').style.display = 'none'
+   };
+
+
+
+</script>
+
+{% endblock %}
