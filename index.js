@@ -92,20 +92,20 @@ app.use('/getByName', function(req, res) {
 
 app.use('/updateAnimalInfo', function(req, res){
 	if(req.method == "GET") {
-		let name = req.query.name;
+		let name = req.query.name; //find based on name recieved from form
 		Animal.findOne( {name: {'$regex': name, $options: 'i'}}, function(err, myAnimal) { 
 			if (err) {
-				res.render('resultpage', {result : err});   
+				res.render('resultpage', {result : err});   //no animal found
 			}
 			else{
-				res.render('editAnimalInfo', {title: 'Edit Animal Info', animal: myAnimal});
+				res.render('editAnimalInfo', {title: 'Edit Animal Info', animal: myAnimal}); //populate info
 			}
 		});
 	} else {
 		if(req.method == "POST") {
             let updateName = req.body.name;
 			let updateType = req.body.type;
-			let updateWeight = req.body.newWeight;
+			let updateWeight = req.body.newWeight; //only makes sense to update weight, other values shouldn't change
 
 		
 			Animal.findOne( {name: updateName}, function(err, myAnimal) { //find the Animal to be updated in the database
@@ -119,7 +119,7 @@ app.use('/updateAnimalInfo', function(req, res){
 							res.render('resultpage', {result : err});  
 						}
 						else {
-						const msg = `Animal data updated for: ${updateName}`;
+						const msg = `Animal data updated for: ${updateName}`; // display the update message
 						res.render('resultPage', { result : msg });
 						}
 					
@@ -132,13 +132,13 @@ app.use('/updateAnimalInfo', function(req, res){
 
 app.get('/deleteAnimal', function(req, res){
 	
-	let name = req.query.name;
-		Animal.findOneAndRemove( {name: name}, function(err, myAnimal) { 
+	let name = req.query.name; //find the animal to be removed based on name
+		Animal.findOneAndRemove( {name: name}, function(err, myAnimal) {  
 		if (err) {
 			res.render('resultpage', {result : err});   
 			}
 		else {
-			const msg = `Animal ${name} removed`;
+			const msg = `Animal ${name} removed`; //populate the result message
 			res.render('resultPage', { result : msg });
 			}
 		});
