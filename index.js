@@ -72,7 +72,7 @@ app.use('/getByName', function(req, res) {
 		
 		let reqName = req.body.name;  // read the name
 		
-		Animal.find( {name: reqName}, function(err, allByName) {  
+		Animal.find( {name: {'$regex': reqName, $options: 'i'}}, function(err, allByName) {  
 			if (err) {
 				res.render('resultpage', {result : err});   
 			}
@@ -93,7 +93,7 @@ app.use('/getByName', function(req, res) {
 app.use('/updateAnimalInfo', function(req, res){
 	if(req.method == "GET") {
 		let name = req.query.name;
-		Animal.findOne( {name: name}, function(err, myAnimal) { 
+		Animal.findOne( {name: {'$regex': name, $options: 'i'}}, function(err, myAnimal) { 
 			if (err) {
 				res.render('resultpage', {result : err});   
 			}
