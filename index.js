@@ -103,11 +103,9 @@ app.use('/updateAnimalInfo', function(req, res){
 		});
 	} else {
 		if(req.method == "POST") {
-            let updateType = req.body.type;
             let updateName = req.body.name;
-			let updateBreed = req.body.breed;
-			let updateAge = req.body.age;
-			let updateColoring = req.body.coloring;
+			let updateType = req.body.type;
+			let updateWeight = req.body.newWeight;
 
 		
 			Animal.findOne( {name: updateName}, function(err, myAnimal) { //find the Animal to be updated in the database
@@ -115,11 +113,7 @@ app.use('/updateAnimalInfo', function(req, res){
 					res.render('resultpage', {result : err});   
 				}
 				else{
-					myAnimal.type = updateType;
-					myAnimal.name = updateName;
-					myAnimal.breed = updateBreed;
-                    myAnimal.age = updateAge;
-                    myAnimal.coloring = updateColoring;
+                    myAnimal.weight = updateWeight;
 					myAnimal.save(function(err){
 						if(err){
 							res.render('resultpage', {result : err});  
