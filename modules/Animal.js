@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/animals');  
+mongoose.connect('mongodb+srv://codekentucky:QmjhAoqCs5CdD5jM@cluster0.46pmhda.mongodb.net/?retryWrites=true&w=majority');  
 
 const animalSchema = new mongoose.Schema({
 	type: {type: String, required: true},
@@ -21,3 +21,4 @@ animalSchema.virtual('age').get(function(){
 });
 
 module.exports = mongoose.model('Animal', animalSchema);
+
