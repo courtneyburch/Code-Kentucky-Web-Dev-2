@@ -119,6 +119,25 @@ main h1{
     display: none;
     color: var(--dark-contrast);
 }
+main input, select {
+  margin: 0.2em;
+  padding: 0.2em;
+  border: 0.05em solid var(--dark-contrast);
+  border-radius: 0.2em;
+  font-size: large;
+}
+main table {
+  max-width: 75%;
+  border-collapse: collapse;
+  
+}
+main table th, tr, td{
+  padding: 0.2em;
+  margin: 0.2em;
+  border: 0.05em solid var(--dark-contrast);
+  border-radius: 0.05em;
+  text-align: center;
+}
 @media screen and (min-width: 676px){ 
 .nav-toggle-label{
     display: none;

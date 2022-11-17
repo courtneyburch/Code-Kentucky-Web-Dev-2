@@ -7,7 +7,7 @@
 
 <form method='post' action='addAnimal'>
 
-    <p><select class='select' name='type'>
+    <p><select class='select' name='type' placeholder="Type" required>
         <option value='Dog'>Dog</option>
         <option value='Cat'>Cat</option>
         <option value='Bird'>Bird</option>
@@ -15,15 +15,15 @@
         <option value='Other'>Other</option>
     </select> Select Breed </p>
 
-    <p><input type="text" name='name' required>Enter Name</p>
+    <p><input type="text" name='name' placeholder='Name' required>Enter Name</p>
 
-    <p><input type="text" name='breed'>Enter Breed</p>
+    <p><input type="text" name='breed' placeholder='Breed'>Enter Breed</p>
 
-    <p><input type="date" name="dob">Date of Birth</p>
+    <p><input type="date" name="dob" required>Date of Birth</p>
 
-    <p><input type="text" name="coloring">Enter Coloring</p>
+    <p><input type="text" name="coloring" placeholder='Coloring'>Coloring</p>
 
-    <p><input type="number" mim=o name="weight">weight</p>
+    <p><input type="number" min="0" placeholder="Weight" name="weight">Weight</p>
 
 
     <p><input type='submit'></p>
