@@ -8,8 +8,8 @@ nunjucks.configure('views', {
 });
 app.set('view engine', 'html');  
 
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
 app.use(express.static('public'))  // serve static file
 
