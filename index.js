@@ -49,6 +49,7 @@ app.use('/addAnimal', function(req, res){  // recieves GET and POST for same rou
             breed: req.body.breed,
             DOB: req.body.dob,
             coloring: req.body.coloring,
+			weight: req.body.weight
             
 	    });
 
