@@ -13,9 +13,9 @@ app.use(express.json());
 
 app.use(express.static('public'))  // serve static file
 
-const Animal = require('./modules/Animal.js');
+const Animal = require('./modules/Animal.js'); //database schema
 
-app.get('/', function(req, res) {   // open welcome page
+app.get('/', function(req, res) {   // open home page
 	res.render('home', { title: 'homepage' }); 
 });
 
@@ -23,7 +23,7 @@ app.get('/showAll', function(req, res) {   // GET request from link in nav bar
 					  
 	Animal.find( function(err, allAnimals) {   
 		if (err) {
-		    res.render('resultpage', {result : err});   
+		    res.render('resultpage', {result : err});  
 		}
 		else {
 		    if (allAnimals.length == 0) {  // array was empty
