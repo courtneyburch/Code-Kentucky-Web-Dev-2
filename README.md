@@ -12,7 +12,7 @@
 
 - Interact with a database to store and retrieve information (e.g. MySQL, MongoDB, etc).
 
-  - MOngoDB with Mongoose schema
+  - MongoDB with Mongoose schema
 
 - Calculate and display data based on an external factor (ex: get the current date, and display how many days remaining until some event)
 
