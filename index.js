@@ -23,11 +23,11 @@ app.get('/showAll', function(req, res) {   // GET request from link in nav bar
 					  
 	Animal.find( function(err, allAnimals) {   
 		if (err) {
-		    res.render('resultpage', {result : err});  
+		    res.render('resultPage', {result : err});  
 		}
 		else {
 		    if (allAnimals.length == 0) {  // array was empty
-			   res.render('resultpage', {result : 'No animals found.'});   
+			   res.render('resultPage', {result : 'No animals found.'});   
 		    }
 		    else {
 			   	res.render('showAll', { animals: allAnimals });  //show all animals in table format
@@ -55,10 +55,10 @@ app.use('/addAnimal', function(req, res){  // recieves GET and POST for same rou
 
 	    newAnimal.save( function(err) {      // save new animal
 		    if (err) {
-		    	res.render('resultpage', {result : 'Error ' + err});  
+		    	res.render('resultPage', {result : 'Error ' + err});  
 		    }
 		    else {
-		        res.render('resultpage', {title: 'add annimal', result : 'New animal has been added'});   
+		        res.render('resultPage', {title: 'add annimal', result : 'New animal has been added'});   
 		    } //populate result page with message
 	    }); 
 	}
@@ -75,11 +75,11 @@ app.use('/getByName', function(req, res) {
 		
 		Animal.find( {name: {'$regex': reqName, $options: 'i'}}, function(err, allByName) {  
 			if (err) {
-				res.render('resultpage', {result : err});   
+				res.render('resultPage', {result : err});   
 			}
 			else {
 				if (allByName.length == 0) { 
-					res.render('resultpage', {result : 'No animal was found with that name.'});   
+					res.render('resultPage', {result : 'No animal was found with that name.'});   
 				} //no animal found with that name
 				else {
 					res.render('showAll', { animals: allByName });  
@@ -96,7 +96,7 @@ app.use('/updateAnimalInfo', function(req, res){
 		let name = req.query.name; //find based on name recieved from form
 		Animal.findOne( {name: {'$regex': name, $options: 'i'}}, function(err, myAnimal) { 
 			if (err) {
-				res.render('resultpage', {result : err});   //no animal found
+				res.render('resultPage', {result : err});   //no animal found
 			}
 			else{
 				res.render('editAnimalInfo', {title: 'Edit Animal Info', animal: myAnimal}); //populate info
@@ -111,13 +111,13 @@ app.use('/updateAnimalInfo', function(req, res){
 		
 			Animal.findOne( {name: updateName}, function(err, myAnimal) { //find the Animal to be updated in the database
 				if (err) {
-					res.render('resultpage', {result : err});   
+					res.render('resultPage', {result : err});   
 				}
 				else{
                     myAnimal.weight = updateWeight;
 					myAnimal.save(function(err){
 						if(err){
-							res.render('resultpage', {result : err});  
+							res.render('resultPage', {result : err});  
 						}
 						else {
 						const msg = `Animal data updated for: ${updateName}`; // display the update message
@@ -136,7 +136,7 @@ app.get('/deleteAnimal', function(req, res){
 	let name = req.query.name; //find the animal to be removed based on name
 		Animal.findOneAndRemove( {name: name}, function(err, myAnimal) {  
 		if (err) {
-			res.render('resultpage', {result : err});   
+			res.render('resultPage', {result : err});   
 			}
 		else {
 			const msg = `Animal ${name} removed`; //populate the result message
