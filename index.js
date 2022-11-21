@@ -146,9 +146,9 @@ app.get('/deleteAnimal', function(req, res){
 	
 });
 	
-const port = 3000
+const PORT = process.env.PORT || 5000
 app.listen(port,  function() {
-	console.log(`Listening on port ${port}, ctrl-c to quit`);
+	console.log(`Listening on port ${PORT}, ctrl-c to quit`);
     });
 
 
