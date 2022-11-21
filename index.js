@@ -73,7 +73,7 @@ app.use('/getByName', function(req, res) {
 		
 		let reqName = req.body.name;  // read the name
 		
-		Animal.find( {name: {'$regex': reqName, $options: 'i'}}, function(err, allByName) {  
+		Animal.find( {name: {$regex: reqName, $options: 'i'}}, function(err, allByName) {  
 			if (err) {
 				res.render('resultPage', {result : err});   
 			}
